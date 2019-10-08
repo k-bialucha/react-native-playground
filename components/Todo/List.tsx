@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import Item from './Item';
+
 import Todo from '../../models/Todo';
 
 const items: Todo[] = [
@@ -14,7 +16,9 @@ interface ListState {
 }
 
 class List extends React.Component<{}, ListState> {
-  items = items;
+  state = {
+    items,
+  };
 
   toggleItemCheckedState(updateIndex: number) {
     const itemsUpdated = this.state.items.map((item, index) => {
@@ -27,11 +31,16 @@ class List extends React.Component<{}, ListState> {
   }
 
   render() {
-    const itemsRendered = this.state.items.map(todo => (
-      <Text key={todo.title}>
-        {todo.title} [{todo.checked ? 'checked' : 'not checked'}]
-      </Text>
+    const itemsRendered = this.state.items.map((todo, index) => (
+      <Item
+        title={todo.title}
+        checked={todo.checked}
+        onPress={() => {
+          this.toggleItemCheckedState(index);
+        }}
+      />
     ));
+
     return <View>{itemsRendered}</View>;
   }
 }
