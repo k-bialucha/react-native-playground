@@ -9,13 +9,31 @@ const items: Todo[] = [
   new Todo('other todo', true),
 ];
 
-const List = () => {
-  const itemsRendered = items.map(todo => (
-    <Text key={todo.title}>
-      {todo.title} [{todo.checked ? 'checked' : 'not checked'}]
-    </Text>
-  ));
-  return <View>{itemsRendered}</View>;
-};
+interface ListState {
+  items: Todo[];
+}
+
+class List extends React.Component<{}, ListState> {
+  items = items;
+
+  toggleItemCheckedState(updateIndex: number) {
+    const itemsUpdated = this.state.items.map((item, index) => {
+      if (index === updateIndex) return { ...item, checked: !item.checked };
+
+      return item;
+    });
+
+    this.setState({ items: itemsUpdated });
+  }
+
+  render() {
+    const itemsRendered = this.state.items.map(todo => (
+      <Text key={todo.title}>
+        {todo.title} [{todo.checked ? 'checked' : 'not checked'}]
+      </Text>
+    ));
+    return <View>{itemsRendered}</View>;
+  }
+}
 
 export default List;
