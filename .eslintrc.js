@@ -22,7 +22,7 @@ module.exports = {
   plugins: ['react', 'prettier', '@typescript-eslint'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
-    'no-use-before-define': 2,
+    'no-use-before-define': 0,
     'arrow-body-style': [2, 'as-needed'],
     'comma-dangle': [2, 'only-multiline'],
     'import/imports-first': 2,
