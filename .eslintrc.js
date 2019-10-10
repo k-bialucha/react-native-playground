@@ -1,19 +1,36 @@
+const fs = require('fs');
+const path = require('path');
+
+const prettierOptions = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
+);
+
 module.exports = {
   env: {
     browser: true,
     es6: true,
   },
-  extends: ['airbnb'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 6,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', 'prettier', '@typescript-eslint'],
   rules: {
+    'prettier/prettier': ['error', prettierOptions],
+    'no-use-before-define': 2,
+    'arrow-body-style': [2, 'as-needed'],
+    'comma-dangle': [2, 'only-multiline'],
+    'import/imports-first': 2,
+    'import/prefer-default-export': 2,
     'react/jsx-filename-extension': [2, { extensions: ['.tsx', '.jsx'] }],
+    'react/jsx-first-prop-new-line': [2, 'multiline'],
+    'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
+    'react/jsx-uses-vars': 2,
+    'max-len': 0,
   },
 };
