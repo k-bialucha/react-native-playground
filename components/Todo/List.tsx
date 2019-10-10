@@ -33,6 +33,7 @@ class List extends React.Component<{}, ListState> {
   render() {
     const itemsRendered = this.state.items.map((todo, index) => (
       <Item
+        key={`${todo.title}[#${index}]`}
         title={todo.title}
         checked={todo.checked}
         onPress={() => {
