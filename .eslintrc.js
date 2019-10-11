@@ -25,6 +25,16 @@ module.exports = {
     'no-use-before-define': 0,
     'arrow-body-style': [2, 'as-needed'],
     'comma-dangle': [2, 'only-multiline'],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+    ],
     'import/imports-first': 2,
     'import/prefer-default-export': 2,
     'react/jsx-filename-extension': [2, { extensions: ['.tsx', '.jsx'] }],
