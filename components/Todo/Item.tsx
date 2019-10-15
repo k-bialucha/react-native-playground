@@ -7,19 +7,17 @@ interface ItemProps {
   onPress: () => void;
 }
 
-const Item: React.FC<ItemProps> = ({ title, checked, onPress }) => {
-  return (
-    <View style={styles.container}>
-      <Text
-        style={{ ...styles.textBase, ...(checked ? styles.textChecked : {}) }}
-        onPress={onPress}
-      >
-        {title}
-      </Text>
-      <Switch value={checked} onValueChange={onPress}></Switch>
-    </View>
-  );
-};
+const Item: React.FC<ItemProps> = ({ title, checked, onPress }) => (
+  <View style={styles.container}>
+    <Text
+      style={{ ...styles.textBase, ...(checked ? styles.textChecked : {}) }}
+      onPress={onPress}
+    >
+      {title}
+    </Text>
+    <Switch value={checked} onValueChange={onPress} />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

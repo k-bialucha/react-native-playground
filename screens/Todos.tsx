@@ -3,16 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import List from '../components/Todo/List';
 
-const TodosScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Todos Screen</Text>
-      <View style={styles.content}>
-        <List />
-      </View>
+const TodosScreen = () => (
+  <View style={styles.container}>
+    <Text style={styles.heading}>Todos Screen</Text>
+    <View style={styles.content}>
+      <List />
     </View>
-  );
-};
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 class Todo {
   title: string;
+
   checked: boolean;
 
   constructor(title: string, checked: boolean) {

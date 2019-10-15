@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 import Item from './Item';
 
 import Todo from '../../models/Todo';
 
-const items: Todo[] = [
+const todos: Todo[] = [
   new Todo('first todo', false),
   new Todo('second todo', false),
   new Todo('other todo', true),
@@ -17,11 +17,13 @@ interface ListState {
 
 class List extends React.Component<{}, ListState> {
   state = {
-    items,
+    items: todos,
   };
 
   toggleItemCheckedState(updateIndex: number) {
-    const itemsUpdated = this.state.items.map((item, index) => {
+    const { items } = this.state;
+
+    const itemsUpdated = items.map((item, index) => {
       if (index === updateIndex) return { ...item, checked: !item.checked };
 
       return item;
@@ -31,9 +33,11 @@ class List extends React.Component<{}, ListState> {
   }
 
   render() {
-    const itemsRendered = this.state.items.map((todo, index) => (
+    const { items } = this.state;
+
+    const itemsRendered = items.map((todo, index) => (
       <Item
-        key={`${todo.title}[#${index}]`}
+        key={`${todo.title}[#${index + 1}]`}
         title={todo.title}
         checked={todo.checked}
         onPress={() => {
