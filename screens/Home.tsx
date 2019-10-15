@@ -1,28 +1,44 @@
-import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Button, StyleSheet } from 'react-native';
 
-// TODO: component types
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
 
-const Home = props => {
-  const { navigate } = props.navigation;
-  return (
-    <View style={styles.container}>
-      <Button title="Go to Todos page" onPress={() => navigate("Todos")} />
-    </View>
-  );
-};
+interface Props {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
 
-Home.navigationOptions = {
-  title: "Home",
-};
+class Home extends React.Component<Props> {
+  static navigationOptions = {
+    title: 'Home',
+  };
+
+  render() {
+    const {
+      navigation: { navigate },
+    } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <Button
+          title="Go to Todo page"
+          onPress={() => navigate('Todo', { name: 'TESTOWY' })}
+        />
+      </View>
+    );
+  }
+}
 
 export default Home;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });
