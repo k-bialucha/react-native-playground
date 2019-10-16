@@ -5,8 +5,6 @@ const prettierOptions = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
 );
 
-console.warn('TSCONFIG', path.resolve('./tsconfig.json'));
-
 module.exports = {
   env: {
     browser: true,
