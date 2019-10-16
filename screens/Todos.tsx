@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import List from '../components/Todo/List';
 
 const TodosScreen = () => (
   <View style={styles.container}>
-    <Text style={styles.heading}>Todos Screen</Text>
     <View style={styles.content}>
       <List />
     </View>
@@ -19,19 +18,13 @@ TodosScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
-    paddingTop: 40,
-    paddingBottom: 40,
+    paddingTop: 10,
+    paddingBottom: 10,
     width: '100%',
     height: '100%',
   },
   content: {
     padding: 15,
-  },
-  heading: {
-    fontSize: 40,
-    color: '#d77',
-    fontWeight: '600',
-    paddingLeft: 10,
   },
 });
 
