@@ -23,6 +23,8 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'no-use-before-define': 0,
+    'no-unused-vars': 0,
+    '@typescript-eslint/no-unused-vars': 2,
     'arrow-body-style': [2, 'as-needed'],
     'comma-dangle': [2, 'only-multiline'],
     'padding-line-between-statements': [
