@@ -12,6 +12,10 @@ const TodosScreen = () => (
   </View>
 );
 
+TodosScreen.navigationOptions = {
+  title: 'Todos',
+};
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
