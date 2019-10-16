@@ -1,32 +1,31 @@
-import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 
-// TODO: component types
+import List from '../components/Todo/List';
 
-const Todos = () => {
-  return (
-    <View style={styles.container}>
-      <ScrollView style={styles.todosContainer}>
-        {/* render todos here */}
-      </ScrollView>
+const TodosScreen = () => (
+  <View style={styles.container}>
+    <View style={styles.content}>
+      <List />
     </View>
-  );
-};
+  </View>
+);
 
-Todos.navigationOptions = {
-  title: "Todos",
+TodosScreen.navigationOptions = {
+  title: 'Todos',
 };
-
-export default Todos;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    paddingHorizontal: 20,
+    backgroundColor: '#eee',
+    paddingTop: 10,
+    paddingBottom: 10,
+    width: '100%',
+    height: '100%',
   },
-  todosContainer: {},
-  // singleTodo: {},
+  content: {
+    padding: 15,
+  },
 });
+
+export default TodosScreen;

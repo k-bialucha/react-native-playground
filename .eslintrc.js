@@ -20,6 +20,13 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'prettier', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'no-use-before-define': 0,
@@ -41,8 +48,10 @@ module.exports = {
     'import/prefer-default-export': 2,
     'react/jsx-filename-extension': [2, { extensions: ['.tsx', '.jsx'] }],
     'react/jsx-first-prop-new-line': [2, 'multiline'],
-    'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
     'react/jsx-uses-vars': 2,
+    'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
+    'react/prop-types': 0,
+    'react/state-in-constructor': [2, 'never'],
     'max-len': 0,
   },
 };
