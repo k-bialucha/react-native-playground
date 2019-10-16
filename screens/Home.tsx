@@ -25,7 +25,7 @@ class Home extends React.Component<Props> {
       <View style={styles.container}>
         <Button
           title="Go to Todo page"
-          onPress={() => navigate('Todo', { name: 'TESTOWY' })}
+          onPress={() => navigate('Todos', { name: 'TESTOWY' })}
         />
       </View>
     );
