@@ -1,17 +1,35 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+
 import List from '../components/Todo/List';
 
-const TodosScreen = () => (
-  <View style={styles.container}>
-    <View style={styles.content}>
-      <List />
-    </View>
-  </View>
-);
+interface TodosNavOptions {
+  navigationOptions: {
+    title: String;
+  };
+}
 
-TodosScreen.navigationOptions = {
+interface TodosProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const Todos: React.SFC<TodosProps> & TodosNavOptions = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <List />
+      </View>
+    </View>
+  );
+};
+
+Todos.navigationOptions = {
   title: 'Todos',
 };
 
@@ -28,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodosScreen;
+export default Todos;
