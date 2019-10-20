@@ -1,25 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import {
-  NavigationParams,
-  NavigationScreenProp,
-  NavigationState,
-} from 'react-navigation';
+import { NavigationStackScreenComponent } from 'react-navigation-stack';
 
 import List from '../components/Todo/List';
 
-interface TodosNavOptions {
-  navigationOptions: {
-    title: String;
-  };
-}
-
-interface TodosProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
-
-const Todos: React.SFC<TodosProps> & TodosNavOptions = () => {
+const Todos: NavigationStackScreenComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
