@@ -1,17 +1,21 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import { NavigationStackScreenComponent } from 'react-navigation-stack';
+
 import List from '../components/Todo/List';
 
-const TodosScreen = () => (
-  <View style={styles.container}>
-    <View style={styles.content}>
-      <List />
+const Todos: NavigationStackScreenComponent = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <List />
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
-TodosScreen.navigationOptions = {
+Todos.navigationOptions = {
   title: 'Todos',
 };
 
@@ -28,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodosScreen;
+export default Todos;
