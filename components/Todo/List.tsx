@@ -11,11 +11,15 @@ const todos: Todo[] = [
   new Todo('other todo', true),
 ];
 
-interface ListState {
+interface Props {
+  style: {};
+}
+
+interface State {
   items: Todo[];
 }
 
-class List extends React.Component<{}, ListState> {
+class List extends React.Component<Props, State> {
   state = {
     items: todos,
   };
@@ -33,6 +37,7 @@ class List extends React.Component<{}, ListState> {
   }
 
   render() {
+    const { style } = this.props;
     const { items } = this.state;
 
     const itemsRendered = items.map((todo, index) => (
@@ -46,7 +51,7 @@ class List extends React.Component<{}, ListState> {
       />
     ));
 
-    return <View>{itemsRendered}</View>;
+    return <View style={style}>{itemsRendered}</View>;
   }
 }
 
