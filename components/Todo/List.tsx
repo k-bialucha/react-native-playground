@@ -5,42 +5,26 @@ import Item from './Item';
 
 import Todo from '../../models/Todo';
 
-const todos: Todo[] = [
-  new Todo('first todo', false),
-  new Todo('second todo', false),
-  new Todo('other todo', true),
-];
-
 interface Props {
   style: {};
+  todos: Todo[];
 }
 
-interface State {
-  items: Todo[];
-}
-
-class List extends React.Component<Props, State> {
-  state = {
-    items: todos,
-  };
-
+class List extends React.Component<Props> {
   toggleItemCheckedState(updateIndex: number) {
-    const { items } = this.state;
+    const { todos: items } = this.props;
 
     const itemsUpdated = items.map((item, index) => {
       if (index === updateIndex) return { ...item, checked: !item.checked };
 
       return item;
     });
-
-    this.setState({ items: itemsUpdated });
   }
 
   render() {
-    const { style } = this.props;
-    const { items } = this.state;
+    const { style, todos } = this.props;
 
-    const itemsRendered = items.map((todo, index) => (
+    const itemsRendered = todos.map((todo, index) => (
       <Item
         key={`${todo.title}[#${index + 1}]`}
         title={todo.title}

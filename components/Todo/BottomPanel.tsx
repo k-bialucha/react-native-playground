@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Button, StyleSheet, TextInput } from 'react-native';
+
+import TodosContext from '../../context/TodosContext';
 
 interface Props {
   style: {};
@@ -7,6 +9,7 @@ interface Props {
 
 const BottomPanel: React.FC<Props> = ({ style }) => {
   const [text, setText] = useState('');
+  const todosContext = useContext(TodosContext);
 
   return (
     <View style={{ ...style, ...styles.layout }}>
@@ -19,8 +22,8 @@ const BottomPanel: React.FC<Props> = ({ style }) => {
       <Button
         title="+ Add"
         onPress={() => {
-          console.warn('button press - adding text:', text);
           setText('');
+          todosContext.addTodo(text);
         }}
         disabled={!text}
       />

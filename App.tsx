@@ -1,8 +1,12 @@
+import React from 'react';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './screens/Home';
 import Todos from './screens/Todos';
+
+import { TodosProvider } from './context/TodosContext';
 
 const MainNavigator = createStackNavigator({
   Home: { screen: Home },
@@ -11,4 +15,10 @@ const MainNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(MainNavigator);
 
-export default AppContainer;
+const App = () => (
+  <TodosProvider>
+    <AppContainer />
+  </TodosProvider>
+);
+
+export default App;

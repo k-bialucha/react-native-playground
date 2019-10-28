@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
@@ -6,14 +6,20 @@ import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import List from '../components/Todo/List';
 import BottomPanel from '../components/Todo/BottomPanel';
 
-const Todos: NavigationStackScreenComponent = () => (
-  <View style={styles.container}>
-    <View style={styles.content}>
-      <List style={styles.list} />
-      <BottomPanel style={styles.bottomPanel} />
+import TodosContext from '../context/TodosContext';
+
+const Todos: NavigationStackScreenComponent = () => {
+  const todosContext = useContext(TodosContext);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <List style={styles.list} todos={todosContext.todos} />
+        <BottomPanel style={styles.bottomPanel} />
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 Todos.navigationOptions = {
   title: 'Todos',

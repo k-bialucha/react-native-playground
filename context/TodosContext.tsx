@@ -1,7 +1,12 @@
 import React from 'react';
 import Todo from '../models/Todo';
 
-const TodosContext = React.createContext({});
+interface TodosContext {
+  todos: Todo[];
+  addTodo: (text: string) => void;
+}
+
+const TodosContext = React.createContext<TodosContext>(null);
 
 interface Props {
   children: React.ReactElement;
@@ -21,7 +26,7 @@ export class TodosProvider extends React.Component<Props, State> {
     todos,
   };
 
-  addTodo = text => {
+  addTodo = (text: string) => {
     const newTodo = new Todo(text, false);
     const updatedTodos = [...this.state.todos, newTodo];
 
