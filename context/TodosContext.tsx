@@ -4,6 +4,7 @@ import Todo from '../models/Todo';
 interface TodosContext {
   todos: Todo[];
   addTodo: (text: string) => void;
+  toggleTodo: (todoId: string) => void;
 }
 
 const TodosContext = React.createContext<TodosContext>(null);
@@ -33,13 +34,29 @@ export class TodosProvider extends React.Component<Props, State> {
     this.setState({ todos: updatedTodos });
   };
 
+  toggleTodoCheckedState = (todoId: string) => {
+    const { todos } = this.state;
+
+    const todosUpdated = todos.map((todo: Todo) => {
+      if (todo.id === todoId) return { ...todo, checked: !todo.checked };
+
+      return todo;
+    });
+
+    this.setState({ todos: todosUpdated });
+  };
+
   render() {
     const { children } = this.props;
 
+    const value = {
+      todos: this.state.todos,
+      addTodo: this.addTodo,
+      toggleTodo: this.toggleTodoCheckedState,
+    };
+
     return (
-      <TodosContext.Provider value={{ ...this.state, addTodo: this.addTodo }}>
-        {children}
-      </TodosContext.Provider>
+      <TodosContext.Provider value={value}>{children}</TodosContext.Provider>
     );
   }
 }

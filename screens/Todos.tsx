@@ -14,7 +14,11 @@ const Todos: NavigationStackScreenComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <List style={styles.list} todos={todosContext.todos} />
+        <List
+          style={styles.list}
+          todos={todosContext.todos}
+          onTodoClick={todosContext.toggleTodo}
+        />
         <BottomPanel style={styles.bottomPanel} />
       </View>
     </View>
