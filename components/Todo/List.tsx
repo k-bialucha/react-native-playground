@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import Item from './Item';
 
@@ -23,7 +23,7 @@ const List: React.FC<Props> = ({ style, todos, onTodoClick }) => {
     />
   ));
 
-  return <View style={style}>{itemsRendered}</View>;
+  return <ScrollView style={style}>{itemsRendered}</ScrollView>;
 };
 
 export default List;

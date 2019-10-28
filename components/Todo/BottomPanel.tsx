@@ -30,6 +30,7 @@ const BottomPanel: React.FC<Props> = ({ style }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   layout: {
     display: 'flex',
