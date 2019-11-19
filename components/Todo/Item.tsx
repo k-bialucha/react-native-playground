@@ -21,13 +21,17 @@ const Item: React.FC<ItemProps> = ({ title, checked, onPress }) => (
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 12,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 12,
   },
   textBase: {
+    flex: 1,
+    marginRight: 30,
     fontSize: 28,
+    textAlign: 'justify',
   },
   textChecked: {
     textDecorationStyle: 'double',
